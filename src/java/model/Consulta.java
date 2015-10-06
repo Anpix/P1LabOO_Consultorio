@@ -22,6 +22,9 @@ public class Consulta implements Marcacao{
         this.encaixe = encaixe;
         this.paciente = paciente;
     }
+
+    public Consulta() {
+    }
     
     
     
@@ -30,13 +33,17 @@ public class Consulta implements Marcacao{
     
     @Override
     public void marcarConsulta() {
+        
+        
+        
         if (this.revisao == true){
             //
         }else{
-            
+            //
         }
     }
     
-    
-    
+    private void procAgenga(Consulta consulta){
+        //Procura agenda
+    }
 }

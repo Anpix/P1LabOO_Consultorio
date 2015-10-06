@@ -6,11 +6,31 @@
         <title>Consultório - Home</title>
     </h:head>
     <h:body>
+        <!--Start program-->
+        #{guiUsuario.Iniciar()}
+        
+        <!--Populate DAO-->
+        #{guiUsuario.populate()}
+        #{guiPlano.populate()}
+        <!--{guiPaciente.populate()}-->
+        <!--{guiAgenda.populate()}-->
+        <!--{guiConsulta.populate()}-->
+        
+        
+
         <h:form>
-            <h:commandButton value="Editoras" action="#{guiUsuario.iniciar()}"/>
-            <h:commandButton value="Autores" action="#{guiAutor.iniciar()}"/>
-            <h:commandButton value="Livros" action="#{guiLivro.iniciar()}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Login: "/>
+                <h:inputText value="#{guiUsuario.usuario.login}"/>
+                <h:outputLabel value="Senha: "/>
+                <h:inputSecret value="#{guiUsuario.usuario.senha}"/>
+            </h:panelGrid>
+            <h:commandButton value="Entrar" action="#{guiUsuario.logar()}"/>
         </h:form>
+        <br/>
+        <p>User: Janete<br/>Pass: 1234<br/>Role: Medica</p>
+        <p>User: Ana<br/>Pass: 1234<br/>Role: Secretaria</p>
+        
     </h:body>
 </html>
 

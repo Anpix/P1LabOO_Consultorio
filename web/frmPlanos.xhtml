@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <title>Listagem de Planos</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="Novo" action="#{guiPlano.novo()}"/>
+            <h:dataTable value="#{guiPlano.planos}" var="pla">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome" />
+                    </f:facet>
+                    <h:outputText value="#{pla.nome}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Excluir" action="#{guiPlano.excluir(pla)}"/>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Voltar" action="homem"/>
+        </h:form>
+        <p>Total: #{guiPlano.planos.size()}</p>
+    </h:body>
+</html>
+

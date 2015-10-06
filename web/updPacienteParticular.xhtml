@@ -10,10 +10,10 @@
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nome: "/>
                 <h:inputText value="#{guiPacienteParticular.paciente.nome}"/>
-                <h:outputLabel value="Sobrenome "/>
-                <h:inputText value="#{guiAutor.autor.sobrenome}"/>
+                <h:outputLabel value="Telefone: "/>
+                <h:inputText value="#{guiPacienteParticular.paciente.telefone}"/>
             </h:panelGrid>
-            <h:commandButton value="Gravar" action="#{guiAutor.gravar()}"/>
+            <h:commandButton value="Gravar" action="#{guiPacienteParticular.gravar()}"/>
             <h:commandButton value="Voltar" action="LstAutores"/>
         </h:form>
     </h:body>

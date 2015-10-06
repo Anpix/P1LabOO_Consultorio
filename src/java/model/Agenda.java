@@ -13,9 +13,11 @@ public class Agenda {
     private DiaSemana diaSemana;
     private Consultorio consultorio;
     private List<Consulta> consultas;
+    private Calendar dataAgenda;
 
-    public Agenda(DiaSemana diaSemana) {
-        this.diaSemana = diaSemana;
+    public Agenda(Calendar dataAgenda) {
+        this.dataAgenda = dataAgenda;
+        this.diaSemana = getDiaEnum(dataAgenda.get(Calendar.DAY_OF_WEEK));
         
         //Define almoço como 12:30
         Calendar almoco = Calendar.getInstance();
@@ -48,12 +50,27 @@ public class Agenda {
             this.horaPrimeiraConsulta = dez;
             this.horaUltimaConsulta = dezoito;
         }
-        
-        
-        
-        
     }
 
+    public Agenda() {
+    }
+
+    public DiaSemana getDiaEnum(Integer dia){
+        if (dia == 1){
+            return DiaSemana.Segunda;
+        } else if (dia == 2){
+            return DiaSemana.Terca;
+        } else if (dia == 3){
+            return DiaSemana.Quarta;
+        } else if (dia == 4){
+            return DiaSemana.Quinta;
+        } else if (dia == 5){
+            return DiaSemana.Sexta;
+        } else {
+            return null;
+        }
+    }
+    
     public Calendar getHoraPrimeiraConsulta() {
         return horaPrimeiraConsulta;
     }
@@ -104,9 +121,4 @@ public class Agenda {
     public void remConsulta(Consulta consulta){
         this.consultas.remove(consulta);
     }
-    
-    
-    
-    
-    
 }
