@@ -2,6 +2,7 @@ package gui;
 
 import dao.PacienteDao;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -9,6 +10,7 @@ import model.Paciente;
 import model.PacienteDePlano;
 import model.PacienteParticular;
 import model.Telefone;
+import model.PlanoSaude;
 
 // @author Anpix
 
@@ -16,9 +18,18 @@ import model.Telefone;
 @SessionScoped
 public class guiPaciente {
     private Paciente paciente;
-    private String nomePlano;
     private List<Paciente> pacientes;
+    
+    private String nome;
+    private String strTelefone;
+    private List<Telefone> telefones;
+    private Date dataNasc;
+    private String nomePlano;
+    private boolean temPlano;
 
+    
+    
+    
     public guiPaciente(){
     }
     
@@ -36,36 +47,43 @@ public class guiPaciente {
         prim.set(Calendar.MONTH, 0);
         
         //String nome, Calendar dataNascimento, Calendar dataPrimeiraConsulta, String email, Telefone telefone, PlanoSaude plano
-        paciente = new PacienteParticular("Fulano da Silva",new Telefone("+5522987654321"));
+        
+        paciente = new PacienteParticular("Fulano da Silva","+5522987654321");
         gravar();
-        paciente = new PacienteParticular("Ciclano da Rocha",new Telefone("+5522993499783"));
+        paciente = new PacienteParticular("Ciclano da Rocha","+5522993499783");
         gravar();
-        paciente = new PacienteParticular("Beltrano Guedes",new Telefone("+5522987123876"));
+        paciente = new PacienteParticular("Beltrano Guedes","+5522987123876");
         gravar();
-        paciente = new PacienteParticular("Tesclano Soares",new Telefone("+5522945672345"));
+        paciente = new PacienteParticular("Tesclano Soares","+5522945672345");
         gravar();
-        paciente = new PacienteParticular("Richard Rich",new Telefone("+5522986347234"));
+        paciente = new PacienteParticular("Richard Rich","+5522986347234");
         gravar();
-        paciente = new Paciente() {};
+        paciente = new PacienteDePlano("teste",nasc,"teste@anpix.com.br",new Telefone("+5522998112233"),new PlanoSaude("teste"));
         gravar();
     }
     
     public String gravar(){
-        paciente.addTelefone(new Telefone(paciente.getTelefone()));
         PacienteDao.add(paciente);
         pacientes = PacienteDao.getPacientes();
         return "frmPacientes";
     }
     
-    public String novoPacienteDePlano(){
-        paciente = new PacienteDePlano();
-        return "addPacientePlano";
+    
+    
+    
+    
+    
+    
+    
+    
+    public void addTelefone(String tel){
+        telefones.add(new Telefone(tel));
     }
     
-    public String novoPacienteParticular(){
-        paciente = new PacienteParticular();
-        return "addPacienteParticular";
-    }
+    
+    
+  
+
     
     public String excluir(Paciente paciente){
         PacienteDao.remove(paciente);
@@ -73,9 +91,36 @@ public class guiPaciente {
     }
 
     
+    public String addPaciente(){
+        if (temPlano == true){
+            //paciente = new PacienteDePlano();
+        }else{
+            //paciente = new PacienteParticular();
+        }
+        return "CadPaciente";
+    }
+
+    public String novoPaciente(){
+        return "addPaciente";
+    }
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    public boolean isTemPlano() {
+        return temPlano;
+    }
+
+    public void setTemPlano(boolean temPlano) {
+        this.temPlano = temPlano;
+    }
     
     public String getNomePlano() {
         return nomePlano;
@@ -101,13 +146,36 @@ public class guiPaciente {
         return paciente;
     }
 
-    public String addPacienteDePlano(){
-        paciente = new PacienteDePlano();
-        return "CadPacienteDePlano";
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getStrTelefone() {
+        return strTelefone;
+    }
+
+    public void setStrTelefone(String strTelefone) {
+        this.strTelefone = strTelefone;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
+
+    public Date getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
     
-    public String addPacienteParticular(){
-        paciente = new PacienteParticular();
-        return "CadPacienteDePlano";
-    }
 }

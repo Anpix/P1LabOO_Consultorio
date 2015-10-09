@@ -9,8 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:commandButton value="Novo Paciente Particular" action="#{guiPaciente.novoPacienteParticular()}"/>
-            <h:commandButton value="Novo Paciente de Plano" action="#{guiPaciente.novoPacienteDePlano()}"/>
+            <h:commandButton value="Novo Paciente" action="#{guiPaciente.novoPaciente()}"/>
             <h:dataTable value="#{guiPaciente.pacientes}" var="pac">
                 <h:column>
                     <f:facet name="header">
@@ -48,8 +47,10 @@
                     <h:commandButton value="Excluir" action="#{guiPaciente.excluir(pac)}"/>
                 </h:column>
             </h:dataTable>
+            
         </h:form>
         <p>Total: #{guiPaciente.pacientes.size()}</p>
+        
     </h:body>
 </html>
 

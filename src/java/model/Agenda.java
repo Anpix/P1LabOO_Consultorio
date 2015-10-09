@@ -52,9 +52,6 @@ public class Agenda {
         }
     }
 
-    public Agenda() {
-    }
-
     public DiaSemana getDiaEnum(Integer dia){
         if (dia == 1){
             return DiaSemana.Segunda;
@@ -71,6 +68,22 @@ public class Agenda {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    // ToString
+    
+    @Override
+    public String toString() {
+        return "Agenda{" + "horaPrimeiraConsulta=" + horaPrimeiraConsulta + ", horaUltimaConsulta=" + horaUltimaConsulta + ", horaInicioAlmoco=" + horaInicioAlmoco + ", diaSemana=" + diaSemana + ", consultorio=" + consultorio + ", consultas=" + consultas + ", dataAgenda=" + dataAgenda + '}';
+    }
+
+    // GETTERS and SETTERS
     public Calendar getHoraPrimeiraConsulta() {
         return horaPrimeiraConsulta;
     }
@@ -121,4 +134,13 @@ public class Agenda {
     public void remConsulta(Consulta consulta){
         this.consultas.remove(consulta);
     }
+
+    public Calendar getDataAgenda() {
+        return dataAgenda;
+    }
+
+    public void setDataAgenda(Calendar dataAgenda) {
+        this.dataAgenda = dataAgenda;
+    }
+    
 }

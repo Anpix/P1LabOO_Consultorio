@@ -11,14 +11,13 @@ public abstract class Paciente {
     private Calendar dataPrimeiraConsulta;
     private String email;
     private List<Telefone> telefones;
-    private String telefone;
     
     public Paciente() {
     }
 
-    public Paciente(String nome, Telefone telefone) {
+    public Paciente(String nome, String tel) {
         this.nome = nome;
-        this.telefones.add(telefone);
+        this.telefones.add(new Telefone(tel));
     }
 
     public String getNome() {
@@ -64,14 +63,4 @@ public abstract class Paciente {
     public void remTelefones(Telefone telefone) {
         this.telefones.remove(telefone);
     }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-    
-    
 }

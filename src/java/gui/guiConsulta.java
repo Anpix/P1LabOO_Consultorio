@@ -19,14 +19,15 @@ public class guiConsulta {
     public guiConsulta() {
     }
 
-    public void Iniciar(){
+    public String Iniciar(){
         consultas = ConsultaDao.getConsultas();
         consulta = new Consulta();
+        return "frmConsultas";
     }
     
     public String gravar(){
         ConsultaDao.add(consulta);
-        return "LstConsulta";
+        return "frmConsultas";
     }
     
     

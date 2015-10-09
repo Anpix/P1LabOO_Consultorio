@@ -95,9 +95,9 @@ public class guiUsuario {
             throw new Exception("Senha Incorreta");
         }else if(verify == 2){
             if (medica == true){
-                return "homem.xhtml";
+                return "home_m";
             }else if (medica == false){
-                return "homes.xhtml";
+                return "home_s";
             }else{
                 return "#";
             }
